@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { PropsProvider } from "../context/Context"; // Import the context provider
+import { UserContextProvider } from "../context/Context"; // Fix: import the correct provider
 import NavBar from "./components/navBar"; // Import NavBar
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="cmyk">
       <body>
-        <PropsProvider>
+        <UserContextProvider>
           <NavBar/>
           {children}
-        </PropsProvider>
+        </UserContextProvider>
       </body>
     </html>
   );

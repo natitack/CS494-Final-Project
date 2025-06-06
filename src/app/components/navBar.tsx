@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Login from "./login"; // Add this import
 
 const NavBar: React.FC = () => {
 
@@ -10,6 +11,7 @@ const NavBar: React.FC = () => {
         <Link href="/" className="btn btn-ghost text-xl">Home</Link>
       </div>
       <div className="flex gap-2">
+        <Login /> 
       </div>
     </div>
   );
