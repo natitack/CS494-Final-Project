@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { UserContextProvider } from "../context/Context"; // Fix: import the correct provider
+import { DeckContextProvider } from "@/context/DeckContext";
 import NavBar from "./components/navBar"; // Import NavBar
 
 export const metadata: Metadata = {
@@ -17,8 +18,10 @@ export default function RootLayout({
     <html lang="en" data-theme="cmyk">
       <body>
         <UserContextProvider>
-          <NavBar/>
-          {children}
+          <DeckContextProvider>
+            <NavBar />
+            {children}
+          </DeckContextProvider>
         </UserContextProvider>
       </body>
     </html>
