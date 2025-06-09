@@ -60,8 +60,8 @@ export default function PlayingCard({ card, index }: PlayingCardProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Card Image */}
-      <div className="relative w-full aspect-[2.5/3.5] rounded-lg overflow-hidden shadow-md bg-white border border-gray-200">
+      {/* Card Image - now uses full container width with proper aspect ratio */}
+      <div className="relative w-full aspect-[2.5/3.5] rounded-lg overflow-hidden shadow-lg bg-white border border-gray-200">
         <img
           src={getImagePath(card)}
           alt={`${card.value} of ${card.suit}`}
@@ -80,21 +80,21 @@ export default function PlayingCard({ card, index }: PlayingCardProps) {
           className="absolute inset-0 flex flex-col items-center justify-center bg-white"
           style={{ display: 'none' }}
         >
-          <div className={`text-2xl font-bold ${getCardColor(card.suit)}`}>
+          <div className={`text-2xl sm:text-3xl font-bold ${getCardColor(card.suit)}`}>
             {card.value}
           </div>
-          <div className={`text-xl ${getCardColor(card.suit)}`}>
+          <div className={`text-xl sm:text-2xl ${getCardColor(card.suit)}`}>
             {getSuitSymbol(card.suit)}
           </div>
         </div>
       </div>
 
-      {/* Action Buttons - Only visible on hover */}
-      <div className={`absolute top-2 right-2 flex flex-col gap-1 transition-opacity duration-200 ${
+      {/* Action Buttons - Only visible on hover, responsive sizing */}
+      <div className={`absolute top-1 right-1 sm:top-2 sm:right-2 flex flex-col gap-1 transition-opacity duration-200 ${
         isHovered ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}>
         <button
-          className={`btn btn-xs btn-error text-white ${loading ? 'loading' : ''}`}
+          className={`btn btn-xs sm:btn-sm btn-error text-white ${loading ? 'loading' : ''}`}
           onClick={(e) => {
             e.stopPropagation();
             handleDiscard();
@@ -106,7 +106,7 @@ export default function PlayingCard({ card, index }: PlayingCardProps) {
         </button>
         
         <button
-          className={`btn btn-xs btn-warning text-white ${loading ? 'loading' : ''}`}
+          className={`btn btn-xs sm:btn-sm btn-warning text-white ${loading ? 'loading' : ''}`}
           onClick={(e) => {
             e.stopPropagation();
             handleTrash();
