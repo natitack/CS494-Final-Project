@@ -28,7 +28,17 @@ export async function getDeckState(userId: string): Promise<DeckState | null> {
   try {
     const ref = doc(db, "decks", userId);
     const snap = await getDoc(ref);
-    return snap.exists() ? (snap.data() as DeckState) : null;
+    if (!snap.exists()) return null;
+    // Ensure the object matches DeckState structure
+    const data = snap.data();
+    return {
+      deck: data.deck,
+      hand: data.hand,
+      discardPile: data.discardPile,
+      userId: data.userId,
+      createdAt: data.createdAt instanceof Date ? data.createdAt : new Date(data.createdAt),
+      updatedAt: data.updatedAt instanceof Date ? data.updatedAt : new Date(data.updatedAt)
+    } as DeckState;
   } catch (error) {
     console.error('Error getting deck state:', error);
     return null;
