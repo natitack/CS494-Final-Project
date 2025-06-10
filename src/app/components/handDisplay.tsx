@@ -1,9 +1,5 @@
 import PlayingCard from './playingCard';
-
-interface Card {
-  suit: string;
-  value: string;
-}
+import type { Card } from '../../types/deck';
 
 interface HandDisplayProps {
   hand: Card[];

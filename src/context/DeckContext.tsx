@@ -2,13 +2,9 @@
 
 import React, { createContext, useContext, useState, useCallback, ReactNode, useEffect } from "react";
 import { useUserContext } from "./Context";
+import type { Card} from "../types/deck";
 
-interface Card {
-  suit: string;
-  value: string;
-}
-
-interface DeckState {
+interface ClientDeckState {
   hand: Card[];
   deckSize: number;
   discardPileSize: number;
@@ -29,7 +25,7 @@ interface ApiResponse {
 }
 
 interface DeckContextType {
-  deckState: DeckState;
+  deckState: ClientDeckState;
   loading: boolean;
   error: string | null;
   success: string | null;
@@ -50,7 +46,7 @@ export const DeckContextProvider = ({ children }: DeckContextProviderProps) => {
   const { user } = useUserContext();
   const userId = user?.uid;
 
-  const [deckState, setDeckState] = useState<DeckState>({
+  const [deckState, setDeckState] = useState<ClientDeckState>({
     hand: [],
     deckSize: 0,
     discardPileSize: 0

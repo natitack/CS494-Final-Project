@@ -1,20 +1,12 @@
 import { useState } from 'react';
-
-interface Card {
-  // Define the properties of a card here, for example:
-  id: string;
-  value: string;
-  suit?: string;
-}
-
-interface DeckState {
-  hand: Card[];
-  deckSize: number;
-  discardPileSize: number;
-}
+import type { Card } from '../../types/deck';
 
 interface GameControlsProps {
-  deckState: DeckState;
+  deckState: {
+    hand: Card[];
+    deckSize: number;
+    discardPileSize: number;
+  };
   loading: boolean;
   onDrawCards: (count: number) => Promise<void>;
   onResetDeck: () => Promise<void>;

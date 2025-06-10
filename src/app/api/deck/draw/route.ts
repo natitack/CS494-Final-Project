@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { setDeckState, getOrInitializeDeck } from '../../../../utils/firestoreDeck';
 
-
 export async function POST(request: Request) {
   try {
     const { userId, count = 1 } = await request.json();
