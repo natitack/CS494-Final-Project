@@ -9,7 +9,7 @@ const Login: React.FC = () => {
         setError(null);
         try {
             await googleSignIn();
-        } catch (err) {
+        } catch {
             setError("Google sign-in failed");
         }
     };

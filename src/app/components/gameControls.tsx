@@ -1,7 +1,14 @@
 import { useState } from 'react';
 
+interface Card {
+  // Define the properties of a card here, for example:
+  id: string;
+  value: string;
+  suit?: string;
+}
+
 interface DeckState {
-  hand: any[];
+  hand: Card[];
   deckSize: number;
   discardPileSize: number;
 }

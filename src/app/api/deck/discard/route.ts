@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getDeckState, setDeckState, getOrInitializeDeck } from '../../../../utils/firestoreDeck';
+import { setDeckState, getOrInitializeDeck } from '../../../../utils/firestoreDeck';
 
 export async function POST(request: Request) {
   try {
